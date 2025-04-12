@@ -1,9 +1,4 @@
 
-
-
-
-
-
 /**
  * Handle the 2D array holding the enclosure information -
  * the grid
@@ -28,21 +23,20 @@ public class Zoo {
 	int num_herbis_fed = 0;
 	int num_carnis_fed = 0;
 
-
 	int zoo_x;
 	int zoo_y;
 	int zoo_z;
 
-	Enclosure herbis [][];
-	Enclosure carnis [][];
-	Enclosure omnis [][];
+	Enclosure herbis[][];
+	Enclosure carnis[][];
+	Enclosure omnis[][];
 
 	Enclosure food_depots[] = new Enclosure[3];
 
-	int [][] pri_herbis;
-	int [][] pri_carnis;
-	int [][] pri_omnis;
-	
+	int[][] pri_herbis;
+	int[][] pri_carnis;
+	int[][] pri_omnis;
+
 	int drone_x;
 	int drone_y;
 	int drone_z;
@@ -66,7 +60,6 @@ public class Zoo {
 		pri_herbis = new int[x][y];
 		pri_omnis = new int[x][y];
 
-
 		for (int i = 0; i < x; i++) {
 			for (int j = 0; j < y; j++) {
 				pri_carnis[i][j] = 0;
@@ -78,6 +71,7 @@ public class Zoo {
 
 	/**
 	 * Drone Depot Coords
+	 * 
 	 * @param x
 	 * @param y
 	 * @param z
@@ -90,6 +84,7 @@ public class Zoo {
 
 	/**
 	 * Store details of ONE food STORAGE DEPOT
+	 * 
 	 * @param x
 	 * @param y
 	 * @param z
@@ -103,6 +98,7 @@ public class Zoo {
 
 	/**
 	 * Store details for one enclosure
+	 * 
 	 * @param x
 	 * @param y
 	 * @param z
@@ -112,16 +108,16 @@ public class Zoo {
 	public void setEnclosureCoord(int x, int y, int z, float importance, int diet) {
 		num_animals++;
 		Enclosure new_enc = new Enclosure(z, importance);
-		switch(diet) {
-			case(HERBI):
+		switch (diet) {
+			case (HERBI):
 				num_herbis++;
 				herbis[x][y] = new_enc;
 				break;
-			case(CARNI):
+			case (CARNI):
 				num_carnis++;
 				carnis[x][y] = new_enc;
 				break;
-			case(OMNI):
+			case (OMNI):
 				num_omnis++;
 				omnis[x][y] = new_enc;
 				break;
@@ -130,6 +126,7 @@ public class Zoo {
 
 	/**
 	 * Store details of ONE dedad zone
+	 * 
 	 * @param x
 	 * @param y
 	 * @param r
@@ -139,7 +136,7 @@ public class Zoo {
 
 	}
 
-    @Override
+	@Override
 	public String toString() {
 
 		String temp = "******************FOR ENCLOSURES***********************\n";
@@ -152,36 +149,36 @@ public class Zoo {
 
 				temp += "\tX: " + i;
 				temp += "\tY: " + j;
-				
+
 				/* herbis */
-				//temp += "##Herbivores##";
-				//pri += "##Herbivores##";
-				//food += "##Herbivores##";
-				/*enclosures */
+				// temp += "##Herbivores##";
+				// pri += "##Herbivores##";
+				// food += "##Herbivores##";
+				/* enclosures */
 				try {
 					temp += herbis[i][j].toString();
 				} catch (NullPointerException e) {
 					temp += " NULL ";
 				}
-				
-				/*priorities */
-				try{
+
+				/* priorities */
+				try {
 					pri += " " + pri_herbis[i][j];
 				} catch (NullPointerException e) {
 					pri += " NULL ";
 				}
 
 				/* carnis */
-				//temp += "##Carnivores##";
-				//pri += "##Carnivores##";
-				//food += "##Carnivores##";
-				/*enclosures */
+				// temp += "##Carnivores##";
+				// pri += "##Carnivores##";
+				// food += "##Carnivores##";
+				/* enclosures */
 				try {
 					temp += carnis[i][j].toString();
 				} catch (NullPointerException e) {
 					temp += " NULL ";
 				}
-				/*priorities */
+				/* priorities */
 				try {
 					pri += " " + pri_carnis[i][j];
 				} catch (NullPointerException e) {
@@ -189,26 +186,25 @@ public class Zoo {
 				}
 
 				/* omnis */
-				//temp += "\n\n##Omnivores##\n\n";
-				//pri += "\n\n##Omnivores##\n\n";
-				//food += "\n\n##Omnivores##\n\n";
-				/*enclosures */
+				// temp += "\n\n##Omnivores##\n\n";
+				// pri += "\n\n##Omnivores##\n\n";
+				// food += "\n\n##Omnivores##\n\n";
+				/* enclosures */
 				try {
 					temp += omnis[i][j].toString();
 				} catch (NullPointerException e) {
 					temp += " NULL ";
 				}
-				
-				/*priorities */
+
+				/* priorities */
 				try {
 					pri += " " + pri_omnis[i][j];
 				} catch (NullPointerException e) {
 					pri += " NULL";
 				}
-				
+
 			}
 
-			
 		}
 
 		/* food depots */
@@ -216,8 +212,7 @@ public class Zoo {
 			food += food_depots[j];
 		}
 
-
-		//temp += pri + food + "*****************************************\n";
+		// temp += pri + food + "*****************************************\n";
 		temp += food + "*****************************************\n";
 
 		temp += "\nnum_animals: " + num_animals;
@@ -228,7 +223,7 @@ public class Zoo {
 		temp += "\nnum_omnis: " + num_omnis;
 
 		temp += "\n*************************DONE*****************************";
-		
+
 		return temp;
 	}
 
@@ -237,48 +232,46 @@ public class Zoo {
 
 		dist = Math.sqrt((Math.pow(x1 - x2, 2)) + (Math.pow(y1 - y2, 2)));
 
-		dist += (50 - z2)*2;
+		dist += (50 - z2) * 2;
 
 		return dist;
 	}
 
 	public double getPoints(double importance, double dist) {
-		return (1000*importance) - dist;
+		return (1000 * importance) - dist;
 	}
 
 	/*
-    * Feeds ONE enclosure
-    */
-    public void feed_enclosure(int x, int y, int d) {
+	 * Feeds ONE enclosure
+	 */
+	public void feed_enclosure(int x, int y, int d) {
 
 		switch (d) {
 			case HERBI:
 				herbis[x][y].setEmpty();
 				pri_herbis[x][y] = 0;
 				num_herbis_fed++;
-			break;
-		
+				break;
+
 			case CARNI:
 				carnis[x][y].setEmpty();
 				pri_carnis[x][y] = 0;
 				num_carnis_fed++;
-			break;
-		
+				break;
+
 			case OMNI:
 				omnis[x][y].setEmpty();
 				pri_omnis[x][y] = 0;
 				num_omnis_fed++;
-			break;
-		
+				break;
+
 			default:
 				break;
-			}
-		
-			num_animals_fed++;
-	
 		}
 
+		num_animals_fed++;
 
+	}
 
 	public String feedAll() {
 		String temp = "[";
@@ -293,25 +286,27 @@ public class Zoo {
 		double shortest_dist = 9999999;
 		Enclosure shortestEnc = new Enclosure();
 		Enclosure enc;
-		boolean[] travel = {false, false, false};
-
+		boolean[] travel = { false, false, false };
 
 		while (num_animals_fed < num_animals) {
 			/* calculate which food depot to go to */
-
+			//System.out.println(num_herbis_fed + " " + num_carnis_fed + " " + num_omnis_fed + "\n");
+			shortest_dist = 9999999;
 			for (int i = 0; i < numFoodDepots; i++) {
 				if (travel[food_depots[i].getDiet()] == true) {
 					continue;
 				}
+				
 				enc = food_depots[i];
 				dist = getDist(x_last, y_last, enc.getX(), enc.getY(), enc.getZ());
 
-				if (dist < shortest_dist) {
+				if ((dist < shortest_dist) && dist > 0) {
 					shortest_dist = dist;
 					shortestEnc = enc;
 				}
 			}
 
+			System.out.println(travel[0] + " " + travel[1] + " " + travel[2] );
 
 			travel[shortestEnc.getDiet()] = true;
 
@@ -319,17 +314,18 @@ public class Zoo {
 			x_last = shortestEnc.getX();
 			y_last = shortestEnc.getY();
 
+			//System.out.println(shortestEnc.getDiet());
 			switch (shortestEnc.getDiet()) {
-				case(HERBI) :
-					//pri_curr_feed = Arrays.(pri_herbis);
-					//copy cur enclosure too
-					feed_herbis(cur_enclosure);
+				case (HERBI):
+					// pri_curr_feed = Arrays.(pri_herbis);
+					// copy cur enclosure too
+					feed_herbis(herbis);
 					break;
-				case(CARNI) :
-					feed_carnis(cur_enclosure);
+				case (CARNI):
+					feed_carnis(carnis);
 					break;
-				case(OMNI) :
-					feed_omnis(cur_enclosure);
+				case (OMNI):
+					feed_omnis(omnis);
 					break;
 			}
 		}
@@ -337,30 +333,55 @@ public class Zoo {
 		return temp + "]";
 	}
 
-	public void feed_carnis(Enclosure [][] cur_enclosure) {
-		while(num_carnis_fed < num_carnis) {
-			int [] arr = new int[2];
+	public void feed_carnis(Enclosure[][] cur_enclosure) {
+		while (num_carnis_fed < num_carnis) {
+			
+			int[] arr = new int[2];
 			arr = get_next_coords(cur_enclosure);
-			//TODO reset last fed
-			feed_enclosure(x_last, y_last, cur_enclosure[arr[0]][arr[1]].getDiet());
+			System.out.println("(" + arr[0] + "," + arr[1] + ")");
+			// TODO reset last fed
+			if (arr[0] == -1 || arr[1] == -1) {
+				return;
+			}
+
+			x_last = arr[0];
+			y_last = arr[1];
+			feed_enclosure(x_last, y_last, CARNI);
 		}
 	}
 
-	public void feed_omnis(Enclosure [][] cur_enclosure) {
-		while(num_omnis_fed < num_omnis) {
-			int [] arr = new int[2];
+	public void feed_omnis(Enclosure[][] cur_enclosure) {
+		while (num_omnis_fed < num_omnis) {
+
+			int[] arr = new int[2];
 			arr = get_next_coords(cur_enclosure);
-			//TODO reset last fed
-			feed_enclosure(x_last, y_last, cur_enclosure[arr[0]][arr[1]].getDiet());
+			System.out.println("(" + arr[0] + "," + arr[1] + ")");
+
+			// TODO reset last fed
+			if (arr[0] == -1 || arr[1] == -1) {
+				return;
+			}
+
+			x_last = arr[0];
+			y_last = arr[1];
+			feed_enclosure(x_last, y_last, OMNI);
 		}
 	}
 
-	public void feed_herbis(Enclosure [][] cur_enclosure) {
-		while(num_herbis_fed < num_herbis) {
-			int [] arr = new int[2];
+	public void feed_herbis(Enclosure[][] cur_enclosure) {
+		while (num_herbis_fed < num_herbis) {
+			
+			int[] arr = new int[2];
 			arr = get_next_coords(cur_enclosure);
-			//TODO reset last fed
-			feed_enclosure(x_last, y_last, cur_enclosure[arr[0]][arr[1]].getDiet());
+			System.out.println("(" + arr[0] + "," + arr[1] + ")");
+
+			if (arr[0] == -1 || arr[1] == -1) {
+				return;
+			}
+			// TODO reset last fed
+			x_last = arr[0];
+			y_last = arr[1];
+			feed_enclosure(x_last, y_last, HERBI);
 		}
 	}
 
@@ -370,21 +391,26 @@ public class Zoo {
 		double dist = 0;
 		double points = 0;
 
-		int possible_next_x = 0;
-		int possible_next_y = 0;
+		int possible_next_x = -1;
+		int possible_next_y = -1;
 
 		for (int i = 0; i < zoo_x; i++) {
 			for (int j = 0; j < zoo_y; j++) {
-				
+
+		
+				if ( cur_enclosure[i][j] == null || cur_enclosure[i][j].isEmpty()) {
+					continue;
+				}
 				if (cur_enclosure[i][j].getImportance() > 0) {
 					dist = getDist(x_last, y_last, i, j, cur_enclosure[i][j].getZ());
 					points = getPoints(cur_enclosure[i][j].getImportance(), dist);
 
+					//System.out.println(dist+ " " + points + "\n");
 					if (points > cur_highest_points) {
 						possible_next_x = i;
 						possible_next_y = j;
 					}
-				}	
+				}
 			}
 		}
 
