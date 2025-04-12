@@ -1,3 +1,5 @@
+
+
 /**
  * Handle the 2D array holding the enclosure information -
  * the grid
@@ -8,6 +10,18 @@ public class Zoo {
 	final int HERBI = 0;
 	final int CARNI = 1;
 	final int OMNI = 2;
+
+	int num_animals = 0;
+	int num_animals_fed = 0;
+
+	int num_omnis = 0;
+	int num_herbis = 0;
+	int num_carnis = 0;
+
+	int num_omnis_fed = 0;
+	int num_herbis_fed = 0;
+	int num_carnis_fed = 0;
+
 
 	int zoo_x;
 	int zoo_y;
@@ -86,16 +100,20 @@ public class Zoo {
 	 * @param importance
 	 * @param diet
 	 */
-	public void setEnclosureCoord(int x, int y, int z, int importance, final int diet) {
+	public void setEnclosureCoord(int x, int y, int z, float importance, final int diet) {
+		num_animals++;
 		Enclosure new_enc = new Enclosure(z, importance);
 		switch(diet) {
 			case(HERBI):
+				num_herbis++;
 				herbis[x][y] = new_enc;
 				break;
 			case(CARNI):
+				num_carnis++;
 				carnis[x][y] = new_enc;
 				break;
 			case(OMNI):
+				num_omnis++;
 				omnis[x][y] = new_enc;
 				break;
 		}
@@ -107,7 +125,26 @@ public class Zoo {
 	 * @param y
 	 * @param r
 	 */
+
 	public void setDeadZone(int x, int y, int r) {
 
+	}
+
+    @Override
+	public String toString() {
+
+		for (int i = 0; i < zoo_x; i++) {
+			for (int j = 0; j < zoo_y; j++) {
+				System.out.println("HEY");
+			}
+		}
+
+		System.out.println("##Herbivores##\n");
+
+		System.out.println("##Carnivores##\n");
+
+		System.out.println("##Omnivores##\n");
+
+		return "*";
 	}
 }

@@ -13,7 +13,7 @@ public class Enclosure {
 	int y;
 	int z;
 
-	int importance = 0;
+	float importance = 0;
 
 	int diet;
 
@@ -43,12 +43,12 @@ public class Enclosure {
 	 * @param z
 	 * @param importance
 	 */
-	public Enclosure(int z1, int importance1) {
+	public Enclosure(int z1, float importance1) {
 		z = z1;
 		importance = importance1;
 	}
 
-	public int getImportance() {
+	public float getImportance() {
 		return importance;
 	}
 
@@ -60,7 +60,7 @@ public class Enclosure {
 		return x;
 	}
 
-	public getY() {
+	public int getY() {
 		return y;
 	}
 }
