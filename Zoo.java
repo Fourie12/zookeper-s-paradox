@@ -138,10 +138,11 @@ public class Zoo {
 		String pri = "\n******************FOR PRIORITY MATRIX***********************\n";
 		String food = "\n******************FOR FOOD DEPOT***********************\n";
 		for (int i = 0; i < zoo_x; i++) {
+			temp += "\n";
 			for (int j = 0; j < zoo_y; j++) {
 
-				temp += "\n\tX: " + i;
-				temp += "\n\tY: " + j;
+				temp += "\tX: " + i;
+				temp += "\tY: " + j;
 				
 				/* herbis */
 				//temp += "##Herbivores##";
