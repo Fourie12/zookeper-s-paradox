@@ -21,7 +21,7 @@ public class Zoo {
 
 	int [][] pri_herbis;
 	int [][] pri_carnis;
-	int [][] 
+	int [][] pri_omnis;
 	
 	int drone_x;
 	int drone_y;
@@ -36,13 +36,21 @@ public class Zoo {
 		zoo_z = z;
 
 		herbis = new Enclosure[x][y];
+		omnis = new Enclosure[x][y];
+		carnis = new Enclosure[x][y];
+
+		pri_carnis = new int[x][y];
+		pri_herbis = new int[x][y];
+		pri_omnis = new int[x][y];
 
 
-		/*for (int i = 0; i < x; i++) {
+		for (int i = 0; i < x; i++) {
 			for (int j = 0; j < y; j++) {
-				
+				pri_carnis[i][j] = 0;
+				pri_herbis[i][j] = 0;
+				pri_omnis[i][j] = 0;
 			}
-		}*/
+		}
 	}
 
 	/**

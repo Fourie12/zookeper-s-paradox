@@ -56,11 +56,11 @@ public class Enclosure {
 		return z;
 	}
 
-	public getX() {
+	public int getX() {
 		return x;
 	}
 
 	public getY() {
-		return Y;
+		return y;
 	}
 }
