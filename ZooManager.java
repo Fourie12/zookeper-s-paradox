@@ -48,6 +48,8 @@ public class ZooManager {
 
             String[] food_storages = food_storages_str.split("\\),");
 
+
+            int c = 0;
             for (int i = 0; i < food_storages.length; i++) {
                 String[] temp_food = food_storages[i].split(",");
                 int diet = 0;
@@ -58,7 +60,10 @@ public class ZooManager {
                 }
                 zoo.setFoodCoord(Integer.parseInt(temp_food[0].replace("(", "")), Integer.parseInt(temp_food[1]),
                         Integer.parseInt(temp_food[2]), diet);
+
+                c++;
             }
+            zoo.setFoodDepots(c);
 
             // Enclosures
             String enclosers_str = scLine.nextLine();
