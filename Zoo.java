@@ -205,7 +205,8 @@ public class Zoo {
 		}
 
 
-		temp += pri + food + "*****************************************\n";
+		//temp += pri + food + "*****************************************\n";
+		temp += food + "*****************************************\n";
 
 		temp += "\nnum_animals: " + num_animals;
 		temp += "\nnum_animals_fed: " + num_animals_fed;
