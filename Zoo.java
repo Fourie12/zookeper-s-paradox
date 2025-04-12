@@ -1,5 +1,7 @@
 
 
+
+
 /**
  * Handle the 2D array holding the enclosure information -
  * the grid
@@ -40,6 +42,9 @@ public class Zoo {
 	int drone_x;
 	int drone_y;
 	int drone_z;
+
+	int x_last;
+	int y_last;
 
 	static int iter = 0;
 
@@ -221,5 +226,133 @@ public class Zoo {
 		temp += "\n*************************DONE*****************************";
 		
 		return temp;
+	}
+
+	public double getDist(int x1, int y1, int x2, int y2, int z2) {
+		double dist = 0.0;
+
+		dist = Math.sqrt((Math.pow(x1 - x2, 2)) + (Math.pow(y1 - y2, 2)));
+
+		dist += (50 - z2)*2;
+
+		return dist;
+	}
+
+	public double getPoints(double importance, double dist) {
+		return (1000*importance) - dist;
+	}
+
+	/*
+    * Feeds ONE enclosure
+    */
+    public void feed_enclosure(int x, int y, int d) {
+
+		switch (d) {
+			case HERBI:
+				herbis[x][y].setEmpty();
+				pri_herbis[x][y] = 0;
+				num_herbis_fed++;
+			break;
+		
+			case CARNI:
+				carnis[x][y].setEmpty();
+				pri_carnis[x][y] = 0;
+				num_carnis_fed++;
+			break;
+		
+			case OMNI:
+				omnis[x][y].setEmpty();
+				pri_omnis[x][y] = 0;
+				num_omnis_fed++;
+			break;
+		
+			default:
+				break;
+			}
+		
+			num_animals_fed++;
+	
+		}
+
+	public String feedAll() {
+		String temp = "[";
+
+		x_last = drone_x;
+		y_last = drone_y;
+
+		Enclosure[][] cur_enclosure = new Enclosure[zoo_x][zoo_y];
+
+		double dist = 0;
+
+		double shortest_dist = 9999999;
+		Enclosure shortestEnc = new Enclosure();
+		Enclosure enc;
+
+		/* calculate which food depot to go to */
+
+		for (int i = 0; i < 3; i++) {
+			enc = food_depots[i];
+			dist = getDist(x_last, y_last, enc.getX(), enc.getY(), enc.getZ());
+
+			if (dist < shortest_dist) {
+				shortest_dist = dist;
+				shortestEnc = enc;
+			}
+		}
+
+		switch (shortestEnc.getDiet()) {
+			case(HERBI) :
+				//pri_curr_feed = Arrays.(pri_herbis);
+				//copy cur enclosure too
+				break;
+			case(CARNI) :
+				break;
+			case(OMNI) :
+				break;
+		}
+
+		while(num_animals_fed < num_animals) {
+			int [] arr = new int[2];
+			arr = get_next_coords(cur_enclosure);
+
+			//TODO reset last fed
+
+			feed_enclosure(x_last, y_last, cur_enclosure[arr[0]][arr[1]].getDiet());
+	
+		}
+
+
+		return temp + "]";
+	}
+
+	public int[] get_next_coords(Enclosure[][] cur_enclosure) {
+
+		int cur_highest_points = 0;
+		double dist = 0;
+		double points = 0;
+
+		int possible_next_x = 0;
+		int possible_next_y = 0;
+
+		for (int i = 0; i < zoo_x; i++) {
+			for (int j = 0; j < zoo_y; j++) {
+				
+				if (cur_enclosure[i][j].getImportance() > 0) {
+					dist = getDist(x_last, y_last, i, j, cur_enclosure[i][j].getZ());
+					points = getPoints(cur_enclosure[i][j].getImportance(), dist);
+
+					if (points > cur_highest_points) {
+						possible_next_x = i;
+						possible_next_y = j;
+					}
+				}	
+			}
+		}
+
+		int[] arr = new int[2];
+		arr[0] = possible_next_x;
+		arr[1] = possible_next_y;
+
+		return arr;
 	}
 }
