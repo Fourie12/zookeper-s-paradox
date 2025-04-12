@@ -144,9 +144,9 @@ public class Zoo {
 				temp += "\n\tY: " + j;
 				
 				/* herbis */
-				temp += "##Herbivores##";
-				pri += "##Herbivores##";
-				food += "##Herbivores##";
+				//temp += "##Herbivores##";
+				//pri += "##Herbivores##";
+				//food += "##Herbivores##";
 				/*enclosures */
 				try {
 					temp += herbis[i][j].toString();
@@ -162,9 +162,9 @@ public class Zoo {
 				}
 
 				/* carnis */
-				temp += "##Carnivores##";
-				pri += "##Carnivores##";
-				food += "##Carnivores##";
+				//temp += "##Carnivores##";
+				//pri += "##Carnivores##";
+				//food += "##Carnivores##";
 				/*enclosures */
 				try {
 					temp += carnis[i][j].toString();
@@ -179,9 +179,9 @@ public class Zoo {
 				}
 
 				/* omnis */
-				temp += "\n\n##Omnivores##\n\n";
-				pri += "\n\n##Omnivores##\n\n";
-				food += "\n\n##Omnivores##\n\n";
+				//temp += "\n\n##Omnivores##\n\n";
+				//pri += "\n\n##Omnivores##\n\n";
+				//food += "\n\n##Omnivores##\n\n";
 				/*enclosures */
 				try {
 					temp += omnis[i][j].toString();
