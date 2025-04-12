@@ -1,6 +1,6 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.io.File;
 
 public class ZooManager {
 
@@ -10,6 +10,7 @@ public class ZooManager {
 
     public static void main(String[] args) {
         readFile();
+        System.out.println(feeder());
     }
 
     private static void readFile() {
@@ -74,5 +75,11 @@ public class ZooManager {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
+    }
+
+    public static String feeder() {
+        String temp = "[";
+
+        return temp + "]";
     }
 }
