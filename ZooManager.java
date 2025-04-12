@@ -17,7 +17,7 @@ public class ZooManager {
      */
     public static void main(String[] args) {
         readFile();
-        zoo.feeder();
+        zoo.feedAll();
         printFile();
     }
 
@@ -80,7 +80,6 @@ public class ZooManager {
                         Integer.parseInt(temp_encl[2]), Float.parseFloat(temp_encl[3]), diet);
             }
 
-
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
@@ -91,8 +90,8 @@ public class ZooManager {
      */
     private static void printFile() {
         String output = "[";
-        //String[][] dests = null;
-        String[][] dests = {{"8,10","6,9","8,10"},{"8,10","5,5","8,10"}};
+        // String[][] dests = null;
+        String[][] dests = { { "8,10", "6,9", "8,10" }, { "8,10", "5,5", "8,10" } };
 
         for (int i = 0; i < dests.length; i++) {
             output += "[";
@@ -107,11 +106,9 @@ public class ZooManager {
                 output += ",";
             }
 
-            
-
         }
-        output+="]";
-        
+        output += "]";
+
         try {
             FileWriter outFile = new FileWriter("solution1.txt");
             outFile.write(output);
@@ -122,35 +119,4 @@ public class ZooManager {
 
     }
 
-    // /*
-    // * Feeds ONE enclosure
-    // */
-    // public void feed_enclosure(int x, int y, int d) {
-
-    // switch (d) {
-    // case HERBI:
-    // herbis[x][y].setEmpty();
-    // pri_herbis[x][y] = 0;
-    // num_herbis_fed++;
-    // break;
-
-    // case CARNI:
-    // carnis[x][y].setEmpty();
-    // pri_carnis[x][y] = 0;
-    // num_carnis_fed++;
-    // break;
-
-    // case OMNI:
-    // omnis[x][y].setEmpty();
-    // pri_omnis[x][y] = 0;
-    // num_omnis_fed++;
-    // break;
-
-    // default:
-    // break;
-    // }
-
-    // num_animals_fed++;
-
-    // }
 }
