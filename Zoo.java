@@ -139,33 +139,63 @@ public class Zoo {
 		String food = "\n******************FOR FOOD DEPOT***********************\n";
 		for (int i = 0; i < zoo_x; i++) {
 			for (int j = 0; j < zoo_y; j++) {
+
+				temp += "\n\tX: " + i;
+				temp += "\n\tY: " + j;
 				
 				/* herbis */
 				temp += "\n\n##Herbivores##\n\n";
 				pri += "\n\n##Herbivores##\n\n";
 				food += "\n\n##Herbivores##\n\n";
 				/*enclosures */
-				temp += herbis[i][j].toString();
+				try {
+					temp += herbis[i][j].toString();
+				} catch (NullPointerException e) {
+					temp += " NULL ";
+				}
+				
 				/*priorities */
-				pri += " " + pri_herbis[i][j];
+				try{
+					pri += " " + pri_herbis[i][j];
+				} catch (NullPointerException e) {
+					pri += " NULL ";
+				}
 
 				/* carnis */
 				temp += "\n\n##Carnivores##\n\n";
 				pri += "\n\n##Carnivores##\n\n";
 				food += "\n\n##Carnivores##\n\n";
 				/*enclosures */
-				temp += carnis[i][j].toString();
+				try {
+					temp += carnis[i][j].toString();
+				} catch (NullPointerException e) {
+					temp += " NULL ";
+				}
 				/*priorities */
-				pri += " " + pri_carnis[i][j];
+				try {
+					pri += " " + pri_carnis[i][j];
+				} catch (NullPointerException e) {
+					pri += " NULL ";
+				}
 
 				/* omnis */
 				temp += "\n\n##Omnivores##\n\n";
 				pri += "\n\n##Omnivores##\n\n";
 				food += "\n\n##Omnivores##\n\n";
 				/*enclosures */
-				temp += omnis[i][j].toString();
+				try {
+					temp += omnis[i][j].toString();
+				} catch (NullPointerException e) {
+					temp += " NULL ";
+				}
+				
 				/*priorities */
-				pri += " " + pri_omnis[i][j];
+				try {
+					pri += " " + pri_omnis[i][j];
+				} catch (NullPointerException e) {
+					pri += " NULL";
+				}
+				
 			}
 
 			/* food depots */
