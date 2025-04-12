@@ -72,6 +72,10 @@ public class Enclosure {
 		return diet;
 	}
 
+	public void setEmpty() {
+		empty = true;
+	}
+
 	public String toString() {
 		String temp = " Enclosure toString: \n";
 
@@ -87,4 +91,5 @@ public class Enclosure {
 
 		return temp;
 	}
+
 }
