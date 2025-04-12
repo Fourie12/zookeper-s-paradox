@@ -63,7 +63,7 @@ public class ZooManager {
 
                 c++;
             }
-            zoo.setFoodDepots(c);
+            zoo.setNumFoodDepots(c);
 
             // Enclosures
             String enclosers_str = scLine.nextLine();
