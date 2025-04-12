@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ZooManager {
 
@@ -10,6 +12,7 @@ public class ZooManager {
 
     public static void main(String[] args) {
         readFile();
+        printFile();
     }
 
     private static void readFile() {
@@ -33,7 +36,6 @@ public class ZooManager {
             // Food Storages Coords
             String food_storages_str = scLine.nextLine();
             food_storages_str = food_storages_str.substring(1, (food_storages_str.length() - 2));
-
 
             String[] food_storages = food_storages_str.split("\\),");
 
@@ -69,42 +71,75 @@ public class ZooManager {
                         Integer.parseInt(temp_encl[2]), Float.parseFloat(temp_encl[3]), diet);
             }
 
-            System.out.println(zoo);
+            // System.out.println(zoo);
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
     }
 
+    private static void printFile() {
+        String output = "[";
+        //String[][] dests = null;
+        String[][] dests = {{"8,10","6,9","8,10"},{"8,10","5,5","8,10"}};
+
+        for (int i = 0; i < dests.length; i++) {
+            output += "[";
+            for (int j = 0; j < dests[i].length; j++) {
+                output += "(" + dests[i][j] + ")";
+                if ((j + 1) != dests[i].length) {
+                    output += ",";
+                }
+            }
+            output += "]";
+            if ((i + 1) != dests.length) {
+                output += ",";
+            }
+
+            
+
+        }
+        output+="]";
+        
+        try {
+            FileWriter outFile = new FileWriter("out.txt");
+            outFile.write(output);
+            outFile.close();
+        } catch (IOException e) {
+            System.out.println("File not Found");
+        }
+
+    }
+
     // /*
-	//  * Feeds ONE enclosure
-	//  */
-	// public void feed_enclosure(int x, int y, int z, int d) {
+    // * Feeds ONE enclosure
+    // */
+    // public void feed_enclosure(int x, int y, int d) {
 
-	// 	switch (d) {
-	// 		case HERBI:
-	// 			herbis[x][y].setEmpty();
-	// 			pri_herbis[x][y] = 0;
-	// 			num_herbis_fed++;
-	// 			break;
+    // switch (d) {
+    // case HERBI:
+    // herbis[x][y].setEmpty();
+    // pri_herbis[x][y] = 0;
+    // num_herbis_fed++;
+    // break;
 
-	// 		case CARNI:
-	// 			carnis[x][y].setEmpty();
-	// 			pri_carnis[x][y] = 0;
-	// 			num_carnis_fed++;
-	// 			break;
+    // case CARNI:
+    // carnis[x][y].setEmpty();
+    // pri_carnis[x][y] = 0;
+    // num_carnis_fed++;
+    // break;
 
-	// 		case OMNI:
-	// 			omnis[x][y].setEmpty();
-	// 			pri_omnis[x][y] = 0;
-	// 			num_omnis_fed++;
-	// 			break;
+    // case OMNI:
+    // omnis[x][y].setEmpty();
+    // pri_omnis[x][y] = 0;
+    // num_omnis_fed++;
+    // break;
 
-	// 		default:
-	// 			break;
-	// 	}
+    // default:
+    // break;
+    // }
 
-	// 	num_animals_fed++;
+    // num_animals_fed++;
 
-	// }
+    // }
 }
