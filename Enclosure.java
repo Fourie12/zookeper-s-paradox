@@ -44,6 +44,8 @@ public class Enclosure {
 		z = z1;
 
 		diet = diet1;
+
+
 	}
 
 	/**

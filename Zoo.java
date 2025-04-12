@@ -15,6 +15,8 @@ public class Zoo {
 	final int CARNI = 1;
 	final int OMNI = 2;
 
+	int numFoodDepots = 0;
+
 	int num_animals = 0;
 	int num_animals_fed = 0;
 
@@ -276,6 +278,8 @@ public class Zoo {
 	
 		}
 
+
+
 	public String feedAll() {
 		String temp = "[";
 
@@ -289,39 +293,75 @@ public class Zoo {
 		double shortest_dist = 9999999;
 		Enclosure shortestEnc = new Enclosure();
 		Enclosure enc;
+		boolean[] travel = {false, false, false};
 
-		/* calculate which food depot to go to */
 
-		for (int i = 0; i < 3; i++) {
-			enc = food_depots[i];
-			dist = getDist(x_last, y_last, enc.getX(), enc.getY(), enc.getZ());
+		while (num_animals_fed < num_animals) {
+			/* calculate which food depot to go to */
 
-			if (dist < shortest_dist) {
-				shortest_dist = dist;
-				shortestEnc = enc;
+			for (int i = 0; i < numFoodDepots; i++) {
+				if (travel[food_depots[i].getDiet()] == true) {
+					continue;
+				}
+				enc = food_depots[i];
+				dist = getDist(x_last, y_last, enc.getX(), enc.getY(), enc.getZ());
+
+				if (dist < shortest_dist) {
+					shortest_dist = dist;
+					shortestEnc = enc;
+				}
+			}
+
+
+			travel[shortestEnc.getDiet()] = true;
+
+			/* travel to enclosure */
+			x_last = shortestEnc.getX();
+			y_last = shortestEnc.getY();
+
+			switch (shortestEnc.getDiet()) {
+				case(HERBI) :
+					//pri_curr_feed = Arrays.(pri_herbis);
+					//copy cur enclosure too
+					feed_herbis(cur_enclosure);
+					break;
+				case(CARNI) :
+					feed_carnis(cur_enclosure);
+					break;
+				case(OMNI) :
+					feed_omnis(cur_enclosure);
+					break;
 			}
 		}
 
-		switch (shortestEnc.getDiet()) {
-			case(HERBI) :
-				//pri_curr_feed = Arrays.(pri_herbis);
-				//copy cur enclosure too
-				break;
-			case(CARNI) :
-				break;
-			case(OMNI) :
-				break;
-		}
+		return temp + "]";
+	}
 
-		while(num_animals_fed < num_animals) {
+	public void feed_carnis(Enclosure [][] cur_enclosure) {
+		while(num_carnis_fed < num_carnis) {
 			int [] arr = new int[2];
 			arr = get_next_coords(cur_enclosure);
 			//TODO reset last fed
 			feed_enclosure(x_last, y_last, cur_enclosure[arr[0]][arr[1]].getDiet());
 		}
+	}
 
+	public void feed_omnis(Enclosure [][] cur_enclosure) {
+		while(num_omnis_fed < num_omnis) {
+			int [] arr = new int[2];
+			arr = get_next_coords(cur_enclosure);
+			//TODO reset last fed
+			feed_enclosure(x_last, y_last, cur_enclosure[arr[0]][arr[1]].getDiet());
+		}
+	}
 
-		return temp + "]";
+	public void feed_herbis(Enclosure [][] cur_enclosure) {
+		while(num_herbis_fed < num_herbis) {
+			int [] arr = new int[2];
+			arr = get_next_coords(cur_enclosure);
+			//TODO reset last fed
+			feed_enclosure(x_last, y_last, cur_enclosure[arr[0]][arr[1]].getDiet());
+		}
 	}
 
 	public int[] get_next_coords(Enclosure[][] cur_enclosure) {
@@ -367,5 +407,9 @@ public class Zoo {
 		}
 
 		return newZoo;
+	}
+
+	public void setNumFoodDepots(int n) {
+		numFoodDepots = n;
 	}
 }
