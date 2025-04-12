@@ -10,7 +10,6 @@ public class ZooManager {
 
     public static void main(String[] args) {
         readFile();
-        System.out.println(feeder());
     }
 
     private static void readFile() {
@@ -77,9 +76,35 @@ public class ZooManager {
         }
     }
 
-    public static String feeder() {
-        String temp = "[";
+    // /*
+	//  * Feeds ONE enclosure
+	//  */
+	// public void feed_enclosure(int x, int y, int z, int d) {
 
-        return temp + "]";
-    }
+	// 	switch (d) {
+	// 		case HERBI:
+	// 			herbis[x][y].setEmpty();
+	// 			pri_herbis[x][y] = 0;
+	// 			num_herbis_fed++;
+	// 			break;
+
+	// 		case CARNI:
+	// 			carnis[x][y].setEmpty();
+	// 			pri_carnis[x][y] = 0;
+	// 			num_carnis_fed++;
+	// 			break;
+
+	// 		case OMNI:
+	// 			omnis[x][y].setEmpty();
+	// 			pri_omnis[x][y] = 0;
+	// 			num_omnis_fed++;
+	// 			break;
+
+	// 		default:
+	// 			break;
+	// 	}
+
+	// 	num_animals_fed++;
+
+	// }
 }
