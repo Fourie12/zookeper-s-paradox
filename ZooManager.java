@@ -10,11 +10,19 @@ public class ZooManager {
     public static int distance_capacity;
     public static Drone drone;
 
+    /**
+     * Main method to be run for task
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         readFile();
         printFile();
     }
 
+    /**
+     * Read input file
+     */
     private static void readFile() {
         try {
 
@@ -71,13 +79,15 @@ public class ZooManager {
                         Integer.parseInt(temp_encl[2]), Float.parseFloat(temp_encl[3]), diet);
             }
 
-            // System.out.println(zoo);
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
     }
 
+    /**
+     * Print to output file "solution1.txt"
+     */
     private static void printFile() {
         String output = "[";
         //String[][] dests = null;
@@ -102,7 +112,7 @@ public class ZooManager {
         output+="]";
         
         try {
-            FileWriter outFile = new FileWriter("out.txt");
+            FileWriter outFile = new FileWriter("solution1.txt");
             outFile.write(output);
             outFile.close();
         } catch (IOException e) {
