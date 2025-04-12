@@ -409,7 +409,7 @@ public class Zoo {
 		return newZoo;
 	}
 
-	public setNumFoodDepots(int n) {
+	public void setNumFoodDepots(int n) {
 		numFoodDepots = n;
 	}
 }
