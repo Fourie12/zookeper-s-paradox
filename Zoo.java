@@ -5,6 +5,10 @@
 public class Zoo {
 	/* have three different 2D matrices */
 
+	final int HERBI = 0;
+	final int CARNI = 1;
+	final int OMNI = 2;
+
 	int zoo_x;
 	int zoo_y;
 	int zoo_z;
@@ -14,6 +18,10 @@ public class Zoo {
 	Enclosure omnis [][];
 
 	Enclosure food_depots[] = new Enclosure[3];
+
+	int [][] pri_herbis;
+	int [][] pri_carnis;
+	int [][] 
 	
 	int drone_x;
 	int drone_y;
@@ -71,7 +79,18 @@ public class Zoo {
 	 * @param diet
 	 */
 	public void setEnclosureCoord(int x, int y, int z, int importance, final int diet) {
-
+		Enclosure new_enc = new Enclosure(z, importance);
+		switch(diet) {
+			case(HERBI):
+				herbis[x][y] = new_enc;
+				break;
+			case(CARNI):
+				carnis[x][y] = new_enc;
+				break;
+			case(OMNI):
+				omnis[x][y] = new_enc;
+				break;
+		}
 	}
 
 	/**

@@ -42,11 +42,25 @@ public class Enclosure {
 	 * MAIN PURPOSE HERE
 	 * @param z
 	 * @param importance
-	 * @param diet
 	 */
-	public Enclosure(int z1, int importance1, int diet1) {
+	public Enclosure(int z1, int importance1) {
 		z = z1;
 		importance = importance1;
-		diet = diet1;
+	}
+
+	public int getImportance() {
+		return importance;
+	}
+
+	public int getZ() {
+		return z;
+	}
+
+	public getX() {
+		return x;
+	}
+
+	public getY() {
+		return Y;
 	}
 }
