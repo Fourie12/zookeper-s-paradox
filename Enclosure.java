@@ -73,15 +73,15 @@ public class Enclosure {
 	}
 
 	public String toString() {
-		String temp = "Enclosure toString: \n";
+		String temp = " Enclosure toString: \n";
 
-		temp += "is empty: " + isEmpty();
-		temp += "x: " + getX();
-		temp += "y: " + getY();
+		temp += " is empty: " + isEmpty();
+		temp += " x: " + getX();
+		temp += " y: " + getY();
 
-		temp += "importance: " + getImportance();
+		temp += " importance: " + getImportance();
 
-		temp += "diet: " + getDiet();
+		temp += " diet: " + getDiet();
 
 		temp += "\n\n";
 
