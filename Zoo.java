@@ -86,7 +86,7 @@ public class Zoo {
 	 * @param z
 	 * @param diet
 	 */
-	public void setFoodCoord(int x, int y, int z, final int diet) {
+	public void setFoodCoord(int x, int y, int z, int diet) {
 		Enclosure food_enclosure = new Enclosure(x, y, z, diet);
 		food_depots[iter] = food_enclosure;
 		iter++;
@@ -100,7 +100,7 @@ public class Zoo {
 	 * @param importance
 	 * @param diet
 	 */
-	public void setEnclosureCoord(int x, int y, int z, float importance, final int diet) {
+	public void setEnclosureCoord(int x, int y, int z, float importance, int diet) {
 		num_animals++;
 		Enclosure new_enc = new Enclosure(z, importance);
 		switch(diet) {
@@ -144,9 +144,9 @@ public class Zoo {
 				temp += "\n\tY: " + j;
 				
 				/* herbis */
-				temp += "\n\n##Herbivores##\n\n";
-				pri += "\n\n##Herbivores##\n\n";
-				food += "\n\n##Herbivores##\n\n";
+				temp += "##Herbivores##";
+				pri += "##Herbivores##";
+				food += "##Herbivores##";
 				/*enclosures */
 				try {
 					temp += herbis[i][j].toString();
@@ -162,9 +162,9 @@ public class Zoo {
 				}
 
 				/* carnis */
-				temp += "\n\n##Carnivores##\n\n";
-				pri += "\n\n##Carnivores##\n\n";
-				food += "\n\n##Carnivores##\n\n";
+				temp += "##Carnivores##";
+				pri += "##Carnivores##";
+				food += "##Carnivores##";
 				/*enclosures */
 				try {
 					temp += carnis[i][j].toString();
