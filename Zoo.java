@@ -2,6 +2,8 @@
 
 
 
+
+
 /**
  * Handle the 2D array holding the enclosure information -
  * the grid
@@ -314,11 +316,8 @@ public class Zoo {
 		while(num_animals_fed < num_animals) {
 			int [] arr = new int[2];
 			arr = get_next_coords(cur_enclosure);
-
 			//TODO reset last fed
-
 			feed_enclosure(x_last, y_last, cur_enclosure[arr[0]][arr[1]].getDiet());
-	
 		}
 
 
@@ -354,5 +353,19 @@ public class Zoo {
 		arr[1] = possible_next_y;
 
 		return arr;
+	}
+
+	public Enclosure[][] getNew2D(Enclosure[][] zoo) {
+
+		Enclosure[][] newZoo = new Enclosure[zoo_x][zoo_y];
+
+		for (int i = 0; i < zoo_x; i++) {
+			for (int j = 0; j < zoo_y; j++) {
+				Enclosure newEnc = new Enclosure(zoo[i][j]);
+				newZoo[i][j] = newEnc;
+			}
+		}
+
+		return newZoo;
 	}
 }

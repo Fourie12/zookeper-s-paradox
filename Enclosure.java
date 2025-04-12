@@ -9,17 +9,26 @@ public class Enclosure {
 	/* if this  */
 	boolean empty = false;
 
-	int x;
-	int y;
-	int z;
+	int x = 0;
+	int y = 0;
+	int z = 0;
 
-	float importance = 0;
+	double importance = 0;
 
-	int diet;
+	int diet = 0;
 
 	public Enclosure() {
 		/* empty by default */
 		empty = true;
+	}
+
+	public Enclosure(Enclosure e) {
+		empty = e.isEmpty();
+		x = e.getX();
+		y = e.getY();
+		z = e.getZ();
+		importance = e.getImportance();
+		diet = e.getDiet();
 	}
 
 	/**
@@ -43,12 +52,12 @@ public class Enclosure {
 	 * @param z
 	 * @param importance
 	 */
-	public Enclosure(int z1, float importance1) {
+	public Enclosure(int z1, double importance1) {
 		z = z1;
 		importance = importance1;
 	}
 
-	public float getImportance() {
+	public double getImportance() {
 		return importance;
 	}
 
@@ -75,6 +84,8 @@ public class Enclosure {
 	public void setEmpty() {
 		empty = true;
 	}
+
+
 
 	public String toString() {
 		String temp = " Enclosure toString: \n";
