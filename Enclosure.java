@@ -63,4 +63,28 @@ public class Enclosure {
 	public int getY() {
 		return y;
 	}
+
+	public boolean isEmpty() {
+		return empty;
+	}
+
+	public int getDiet() {
+		return diet;
+	}
+
+	public String toString() {
+		String temp = "Enclosure toString: \n";
+
+		temp += "is empty: " + isEmpty();
+		temp += "x: " + getX();
+		temp += "y: " + getY();
+
+		temp += "importance: " + getImportance();
+
+		temp += "diet: " + getDiet();
+
+		temp += "\n\n";
+
+		return temp;
+	}
 }

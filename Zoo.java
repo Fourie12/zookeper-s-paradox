@@ -133,18 +133,59 @@ public class Zoo {
     @Override
 	public String toString() {
 
+		String temp = "******************FOR ENCLOSURES***********************\n";
+		temp += "zoo_x: " + zoo_x + " zoo_y: " + zoo_y + "\n";
+		String pri = "\n******************FOR PRIORITY MATRIX***********************\n";
+		String food = "\n******************FOR FOOD DEPOT***********************\n";
 		for (int i = 0; i < zoo_x; i++) {
 			for (int j = 0; j < zoo_y; j++) {
-				System.out.println("HEY");
+				
+				/* herbis */
+				temp += "\n\n##Herbivores##\n\n";
+				pri += "\n\n##Herbivores##\n\n";
+				food += "\n\n##Herbivores##\n\n";
+				/*enclosures */
+				temp += herbis[i][j].toString();
+				/*priorities */
+				pri += " " + pri_herbis[i][j];
+
+				/* carnis */
+				temp += "\n\n##Carnivores##\n\n";
+				pri += "\n\n##Carnivores##\n\n";
+				food += "\n\n##Carnivores##\n\n";
+				/*enclosures */
+				temp += carnis[i][j].toString();
+				/*priorities */
+				pri += " " + pri_carnis[i][j];
+
+				/* omnis */
+				temp += "\n\n##Omnivores##\n\n";
+				pri += "\n\n##Omnivores##\n\n";
+				food += "\n\n##Omnivores##\n\n";
+				/*enclosures */
+				temp += omnis[i][j].toString();
+				/*priorities */
+				pri += " " + pri_omnis[i][j];
+			}
+
+			/* food depots */
+			for (int j = 0; j < iter; j++) {
+				food += food_depots[j];
 			}
 		}
 
-		System.out.println("##Herbivores##\n");
 
-		System.out.println("##Carnivores##\n");
+		temp += pri + food + "*****************************************\n";
 
-		System.out.println("##Omnivores##\n");
+		temp += "\nnum_animals: " + num_animals;
+		temp += "\nnum_animals_fed: " + num_animals_fed;
 
-		return "*";
+		temp += "\nnum_carnis: " + num_carnis;
+		temp += "\nnum_herbis: " + num_herbis;
+		temp += "\nnum_omnis: " + num_omnis;
+
+		temp += "\n*************************DONE*****************************";
+		
+		return temp;
 	}
 }
