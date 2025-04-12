@@ -199,10 +199,12 @@ public class Zoo {
 				
 			}
 
-			/* food depots */
-			for (int j = 0; j < iter; j++) {
-				food += food_depots[j];
-			}
+			
+		}
+
+		/* food depots */
+		for (int j = 0; j < iter; j++) {
+			food += food_depots[j];
 		}
 
 
