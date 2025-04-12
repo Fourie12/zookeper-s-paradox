@@ -17,6 +17,7 @@ public class ZooManager {
      */
     public static void main(String[] args) {
         readFile();
+        zoo.feeder();
         printFile();
     }
 
