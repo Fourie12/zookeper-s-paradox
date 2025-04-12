@@ -59,15 +59,17 @@ public class ZooManager {
                 String[] temp_encl = enclosures[i].split(",");
 
                 int diet = 0;
-                if (temp_encl[3].equals("c")) {
+                if (temp_encl[4].equals("c")) {
                     diet = 1;
-                } else if (temp_encl[3].equals("o")) {
+                } else if (temp_encl[4].equals("o")) {
                     diet = 2;
                 }
 
                 zoo.setEnclosureCoord(Integer.parseInt(temp_encl[0].replace("(", "")), Integer.parseInt(temp_encl[1]),
                         Integer.parseInt(temp_encl[2]), Float.parseFloat(temp_encl[3]), diet);
             }
+
+            System.out.println(zoo);
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
